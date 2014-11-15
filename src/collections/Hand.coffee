@@ -5,7 +5,7 @@ class window.Hand extends Backbone.Collection
 
   hit: ->
     if @canPlay
-      newCard = @deck.pop()
+      newCard = @deck.getNextCard()
       @add(newCard)
       newCard
 
@@ -36,7 +36,11 @@ class window.Hand extends Backbone.Collection
         console.log('minscore', @scores()[0])
       if @isBust()
         console.log('im bust')
-      @trigger('handsUp', @)
+      @trigger('handsUp')
+
+  newHand: ->
+    @canPlay = true
+    return
 
 
   isBust: ->
