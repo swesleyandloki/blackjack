@@ -8,8 +8,3 @@ class window.App extends Backbone.Model
   initialize: ->
     @set 'game', game = new Game()
     @game = @get 'game'
-    @game.on('handOver', @updateCount, @)
-
-
-  updateCount: (winner) ->
-    @set (winner + 'Hands'), (@get(winner + 'Hands') + 1)
