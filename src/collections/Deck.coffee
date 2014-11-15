@@ -15,10 +15,13 @@ class window.Deck extends Backbone.Collection
     [@getNextCard(), @getNextCard()]
 
   subsequentDealerDeal: ->
-    [@getNextCard().flip(), @getNextCard()]
+    [@getNextCard().flipDown(), @getNextCard()]
 
   getNextCard: ->
     nextCard = @pop()
     @unshift(nextCard)
-    return nextCard
+    return nextCard.flipUp()
 
+  # faceUp: ->
+  #   faceDown = @filter((card)-> !card.get('revealed'))
+  #   faceDown.forEach((card)-> card.set('revealed', true))

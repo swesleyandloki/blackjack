@@ -41,3 +41,4 @@ class window.Game extends Backbone.Model
     @player.reset(@deck.subsequentPlayerDeal())
     @dealer.reset(@deck.subsequentDealerDeal())
     @player.newHand()
+    # @deck.faceUp()

@@ -31,7 +31,7 @@ class window.Hand extends Backbone.Collection
   playDealer: ->
     if @isDealer
       console.log 'dealer turn'
-      @at(0).flip()
+      @at(0).flipUp()
       # if either score is above 17 we stop
       # if both are over 21 we are bust
       # if both are under 17 we deal another card
