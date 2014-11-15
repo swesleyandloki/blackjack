@@ -5,7 +5,9 @@ class window.Hand extends Backbone.Collection
 
   hit: ->
     if @canPlay
-      @add(@deck.pop())
+      newCard = @deck.pop()
+      @add(newCard)
+      newCard
 
   hasAce: -> @reduce (memo, card) ->
     memo or card.get('value') is 1
