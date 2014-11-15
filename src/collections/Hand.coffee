@@ -4,10 +4,14 @@ class window.Hand extends Backbone.Collection
   initialize: (array, @deck, @isDealer) ->
 
   hit: ->
-    if @canPlay
+    if @canPlay and not @isBust()
       newCard = @deck.getNextCard()
       @add(newCard)
-      newCard
+      if not @isBust()
+        newCard
+      else
+        alert 'bustybizznasssucka'
+        @trigger('bust')
 
   hasAce: -> @reduce (memo, card) ->
     memo or card.get('value') is 1

@@ -9,14 +9,12 @@ class window.App extends Backbone.Model
 
     @get('dealerHand').on('handsUp', @compare, @)
     @on('handOver', @newGame, @)
+    @get('playerHand').on('bust', @handOver, @)
 
   compare: ()->
     console.log('im comparing')
-    if (@get('playerHand').isBust() and @get('dealerHand').isBust())
-      alert('busty town')
-    else if (@get('playerHand').isBust() and not @get('dealerHand').isBust())
-      alert('dealer wins')
-    else if (not @get('playerHand').isBust() and @get('dealerHand').isBust())
+
+    if (@get('dealerHand').isBust())
       alert('player wins')
     else
       playerScore = @getScore('player')
@@ -25,8 +23,10 @@ class window.App extends Backbone.Model
         alert('dealer wins')
       else
         alert('player wins')
+      @handOver()
 
     # trigger 'game over, please redeal'
+  handOver: ->
     @trigger('handOver')
 
   getScore: (player)->
@@ -37,7 +37,3 @@ class window.App extends Backbone.Model
     @get('playerHand').reset(@get('deck').subsequentPlayerDeal())
     @get('dealerHand').reset(@get('deck').subsequentDealerDeal())
     @get('playerHand').newHand()
-
-
-  dealHands: () ->
-

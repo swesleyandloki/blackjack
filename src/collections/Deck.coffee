@@ -7,9 +7,9 @@ class window.Deck extends Backbone.Collection
         rank: card % 13
         suit: Math.floor(card / 13)
 
-  dealPlayer: -> new Hand [@getNextCard(), @getNextCard()], @
+  dealPlayer: -> new Hand @subsequentPlayerDeal(), @
 
-  dealDealer: -> new Hand [@getNextCard().flip(), @getNextCard()], @, true
+  dealDealer: -> new Hand @subsequentDealerDeal(), @, true
 
   subsequentPlayerDeal: ->
     [@getNextCard(), @getNextCard()]
