@@ -34,6 +34,8 @@ class window.Hand extends Backbone.Collection
         console.log('minscore', @scores()[0])
       if @isBust()
         console.log('im bust')
+      @trigger('handsUp', @)
+
 
   isBust: ->
     @minScore() > 21
