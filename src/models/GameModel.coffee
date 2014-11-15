@@ -12,7 +12,7 @@ class window.Game extends Backbone.Model
     @dealer.on('handsUp', @compare, @)
     @player.on('bust', @handOver, @)
 
-    @on('handOver', @newGame, @)
+    @on('handOver', @delayNewGame, @)
 
   compare: ()->
     console.log('im comparing')
@@ -42,3 +42,6 @@ class window.Game extends Backbone.Model
     @dealer.reset(@deck.subsequentDealerDeal())
     @player.newHand()
     # @deck.faceUp()
+
+  delayNewGame: () ->
+    setTimeout(@newGame.bind(@), 3000)
