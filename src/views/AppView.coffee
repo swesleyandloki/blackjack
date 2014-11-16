@@ -3,8 +3,9 @@ class window.AppView extends Backbone.View
     <div class="score-card-container">
     </div>
     <button class="hit-button">Hit</button> <button class="stand-button">Stand</button>
-    <div class="player-hand-container"></div>
     <div class="dealer-hand-container"></div>
+      <div><img src="img/card-back.png"/></div>
+    <div class="player-hand-container"></div>
   '
 
   events:
@@ -17,10 +18,11 @@ class window.AppView extends Backbone.View
     @render()
 
   render: ->
+    @$el.addClass('errything')
     @$el.children().detach()
     @$el.html @template
     @gameFlowView = new GameFlowView(model: @model.game)
-    @$('.player-hand-container').html new HandView(collection: @model.game.player).el
     @$('.dealer-hand-container').html new HandView(collection: @model.game.dealer).el
+    @$('.player-hand-container').html new HandView(collection: @model.game.player).el
     @$('.score-card-container').html @gameFlowView.el
 

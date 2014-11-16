@@ -20,7 +20,7 @@ class window.GameFlowView extends Backbone.View
     defaults =
       playerHands: @model.get 'playerHands'
       dealerHands: @model.get 'dealerHands'
-      winner: if (winner = @model.get('winner')) then winner + ' wins!' else ''
+      winner: if (winner = @model.get('winner')) then winner + ' wins!' else ' '
     @$el.html(@template(
       defaults
     ))

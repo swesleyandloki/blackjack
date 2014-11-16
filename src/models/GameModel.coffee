@@ -23,7 +23,7 @@ class window.Game extends Backbone.Model
     console.log('im comparing')
     if(@player.isBust())
       @set 'winner','dealer'
-    if (@dealer.isBust())
+    else if(@dealer.isBust())
       @set 'winner','player'
     else
       playerScore = @getScore(@player)

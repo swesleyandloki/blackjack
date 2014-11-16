@@ -57,6 +57,6 @@ class window.Hand extends Backbone.Collection
 
   legitScore: ->
     playerScores = @scores()
-    if playerScores[1] > 21 then playerScores[0] else playerScores[1]
+    if playerScores[1] < 21 then playerScores[1] else playerScores[0]
 
 
